@@ -10,6 +10,11 @@ module Samplserv
       "Welcome to Samplserv!"
     end
 
+    post "/beat" do
+      spawn("afplay \"samples/beat.mp3\"")
+      "playing music..."
+    end
+
     post "/better" do
       version = params["v"] ? params["v"].to_i : 1
       spawn("afplay \"samples/Better#{version}.mp3\"")
@@ -36,6 +41,7 @@ module Samplserv
 
     post "/faster" do
       version = params["v"] ? params["v"].to_i : 1
+      #binding.pry
       spawn("afplay \"samples/Faster#{version}.mp3\"")
       puts "Play the song now..."
     end
@@ -67,7 +73,11 @@ module Samplserv
     post "/morethan" do
       version = params["v"] ? params["v"] : 1
       spawn("afplay \"samples/MoreThan#{version}.mp3\"")
+<<<<<<< HEAD
+      "playing music..."
+=======
       puts "Play the song now..."
+>>>>>>> 859495b044b3972bdb57ec5ad3a8f06c4bbc7d6d
     end
 
     post "/never" do 
@@ -109,6 +119,7 @@ module Samplserv
     get "/stop" do
       spawn("killall afplay")
       "So much for the music..."
+      "playing music..."
     end
 
     run! if app_file == $0
